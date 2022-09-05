@@ -1,6 +1,6 @@
 from ast import Delete
 
-from univercity_sistem.database_service.generic_database import GenericDataBase
+from restaurante_sistem.database_service.generic_database import GenericDataBase
 
 class ClientesDataBase(GenericDataBase):
     def __init__(self)->None:

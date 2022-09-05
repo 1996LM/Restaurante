@@ -1,45 +1,45 @@
 from argparse import ArgumentParser, Namespace
 from ast import Str
 
-from restaurant_sistem import(
-    studentsDatabase,
-    TeachersDataBase,
-    get_students_metrics,
-    get_teachers_metrics
+from restaurante_sistem import(
+    ClientesDataBase,
+    EmpleadosDataBase,
+    get_clientes_metrics,
+    get_empleados_metrics
 )
 
 def execute(args: Namespace)->None:
-    if args.database_name == "students":
-        students_database= StudentsDataBase()
-    if args.database_name == "teachers":
-        database = TeachersDataBase()
+    if args.database_name == "clientes":
+        clientes_database= ClientesDataBase()
+    if args.database_name == "empleados":
+        database = EmpleadosDataBase()
        
     while True:
-        #Estudiantes: primer nombre, edad , semestre
-        #Profesores: primer nombre, edad, salario
+        #clientes: primer nombre, edad , valor_factura
+        #emleados: primer nombre, edad, salario
         #la letra e identifica estudiantes y la letra p a profesores
         user_input = input("ingrese los datos del individuo:")
 
-        identifier, first_name, age, semester_or_salary = user_input.split(" ")
-        if identifier =="e":
+        identifier, first_name, age, valor_factura_or_salario = user_input.split(" ")
+        if identifier =="c":
             person_id = database.create({
                 "first_name": first_name,
                 "age": int(age),
-                "semester":int(semester_or_salary)
+                "valor_factura":int(valor_factura_or_salario)
             })
-            get_students_metrics(database)
+            get_clientes_metrics(database)
 
-        if identifier =="p": 
+        if identifier =="e": 
             person_id = database.create({
                 "first_name": first_name,
                 "age": int(age),
-                "salary":float(semester_or_salary)
+                "salario":float(semester_or_salario)
             })   
 
-            get_teachers_metric(database)
+            get_emoleados_metric(database)
         #print(students_database.read(student_id))
-        print(students_database.get_all_data())
-        print(students_database.count())
+        print(clientes_database.get_all_data())
+        print(clientes_database.count())
         
 
         #print(first_name)
@@ -54,7 +54,7 @@ def main()->None:
 
     parser.add_argument(
         "-dn", "--database-name", type=str,
-        choices=["students", "teacher", "athers"]
+        choices=["clientes", "empleados", "athers"]
     )
 
     args = parser.parse_args()
