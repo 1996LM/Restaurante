@@ -1,0 +1,5 @@
+from restaurante_sistem.database_service.clientes import ClientesDataBase
+from restaurante_sistem.database_service.clientes import ClientesDataBase
+from restaurante_sistem.database_service.empleados import EmpleadosDataBase
+from restaurante_sistem.statistic.clientes import get_clientes_metrics
+from restaurante_sistem.statistic.empleados import get_empleados_metrics
